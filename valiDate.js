@@ -220,7 +220,7 @@
 
 		showSelector : function(){
 
-			this.offset = element.getBoundingClientRect();
+			this.offset = this.element.getBoundingClientRect();
 
 			$(valiDate.selector).css({
 				top      : this.offset.bottom,
