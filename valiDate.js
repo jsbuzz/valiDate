@@ -1,14 +1,3 @@
-	/* ********************************************************************************************
-		JQuery plugin
-	*/
-
-	jQuery.fn.extend({
-	valiDate: function(options) {
-		return this.each(function(){
-				valiDate.instance().init(this,options);
-			});
-		}
-	});
 
 	/* ********************************************************************************************
 		IE compatibility quirks
@@ -47,6 +36,18 @@
 		}
 	}
 
+
+	/* ********************************************************************************************
+		JQuery plugin
+	*/
+
+	jQuery.fn.extend({
+	valiDate: function(options) {
+		return this.each(function(){
+				valiDate.instance().init(this,options);
+			});
+		}
+	});
 
 
 	/* ********************************************************************************************
@@ -190,6 +191,7 @@
 			{
 				this.dateHTML = dateHTML;
 				this.options.onEdit && this.options.onEdit.call(this.element,this);
+				this.validInput = false;
 			}
 
 			if(valiDate.dateList.innerHTML!=dateHTML)
@@ -201,6 +203,13 @@
 					$this.validInput = this.innerHTML;
 					$this.onSelect();
 				});
+
+				var $this = this;
+				$(valiDate.dateList).children().each(function(){
+					if(this.innerHTML == $this.validInput)
+						this.className = 'selected';
+				});
+
 			}
 
 			this.showSelector();
@@ -227,12 +236,6 @@
 				left     : this.offset.left,
 				minWidth : this.offset.width ? this.offset.width : (this.offset.right - this.offset.left)
 			}).show();
-
-			var $this = this;
-			$(valiDate.dateList).children().each(function(){
-				if(this.innerHTML == $this.validInput)
-					this.className = 'selected';
-			});
 		}
 
 	};
