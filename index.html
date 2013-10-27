@@ -1,0 +1,35 @@
+<html>
+<head>
+	<title>Date validation test</title>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" ></script>
+	<script src="valiDate.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$("#birthdate").valiDate({
+			onInvalid : function(){$("#nextButton")[0].disabled = true},
+			onEdit    : function(){$("#nextButton")[0].disabled = true},
+			onSelect  : function(){$("#nextButton")[0].disabled = false}
+		});
+
+		$("#childdate").valiDate({			
+			onInvalid : function(){$(this).removeClass('valid').addClass('invalid')},
+			onEdit    : function(){$(this).removeClass('valid').addClass('invalid')},
+			onSelect  : function(){$(this).removeClass('invalid').addClass('valid')}
+		});
+
+	});
+	</script>
+	<link rel="stylesheet" type="text/css" href="site.css" />
+</head>
+<body>
+	<h1>Date validation test <span>simple demo<br/>by Matyas Buczko</span></h1>
+	<div class="section">
+		<input type="text" id="birthdate" class="date-input"/>
+		<button id="nextButton" disabled="disabled">Next</button>
+	</div>
+	<div class="section">
+		<input type="text" id="childdate" class="date-input"/>
+	</div>
+</body>
+</html>

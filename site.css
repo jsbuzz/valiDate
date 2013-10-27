@@ -1,0 +1,73 @@
+		* {
+			font-family: Calibri,Helvetia,sans-serif;
+		}
+
+		body {
+			padding:0;
+			margin:0;
+		}
+		
+		h1{
+			margin:0;
+			padding: 5px 20px;
+			background-color: navy;
+			color: white;
+			border-bottom: 5px solid #555;
+			margin-bottom: 10px;
+		}
+		
+		h1 span{
+			font-size: 13px;
+			color: #ddd;
+			display: inline-block;
+			margin-left: 5px;
+			padding-left: 5px;
+			border-left: 1px solid #ddd;
+		}
+
+		h1 span strong{
+			color: white;
+		}
+
+		div.section {
+			margin: 10px;
+		}
+
+		.date-input.invalid {
+			color : red;
+		}
+
+		.date-input.valid {
+			color : green;
+		}
+
+
+		#valiDateSelector {
+			position : absolute;
+			border   : 1px solid #ddd;
+			display  : none;
+			background-color: white;
+		}
+
+		#valiDateList {
+			padding : 0;
+			margin  : 0;
+		}
+		#valiDateList li {
+			cursor  : pointer;
+			padding : 2px;
+			list-style-type : none;
+		}
+		#valiDateList li:hover {
+			background-color : navy;
+			color            : white; 
+		}
+		#valiDateList li.selected {
+			font-weight : bold;
+		}
+		#valiDateList i {
+			padding    : 2px;
+			cursor     : default;
+			text-align : center;
+			display    : block; 
+		}
