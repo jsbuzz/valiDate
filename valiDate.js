@@ -83,7 +83,6 @@
 				element.className += ' valiDate';
 
 			this.$ = $(element);
-			this.offset = element.getBoundingClientRect();
 
 			// event handling
 			this.$
@@ -220,6 +219,9 @@
 		},
 
 		showSelector : function(){
+
+			this.offset = element.getBoundingClientRect();
+
 			$(valiDate.selector).css({
 				top      : this.offset.bottom,
 				left     : this.offset.left,
