@@ -203,14 +203,14 @@
 					$this.validInput = this.innerHTML;
 					$this.onSelect();
 				});
-
-				var $this = this;
-				$(valiDate.dateList).children().each(function(){
-					if(this.innerHTML == $this.validInput)
-						this.className = 'selected';
-				});
-
 			}
+
+			var $this = this;
+			$(valiDate.dateList).children().removeClass('selected').each(function(){
+				if(this.innerHTML == $this.validInput)
+					this.className = 'selected';
+			});
+
 
 			this.showSelector();
 		},
