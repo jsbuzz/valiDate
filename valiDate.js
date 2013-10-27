@@ -1,3 +1,6 @@
+	/* ********************************************************************************************
+		JQuery plugin
+	*/
 
 	jQuery.fn.extend({
 	valiDate: function(options) {
@@ -7,6 +10,48 @@
 		}
 	});
 
+	/* ********************************************************************************************
+		IE compatibility quirks
+	*/
+	if(!Function.prototype.bind)
+	{
+	  Function.prototype.bind = function(oThis){
+	    if (typeof this !== "function") {
+	      // closest thing possible to the ECMAScript 5 internal IsCallable function
+	      throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");
+	    }
+
+	    var aArgs = Array.prototype.slice.call(arguments, 1), 
+	        fToBind = this, 
+	        fNOP = function () {},
+	        fBound = function () {
+	          return fToBind.apply(this instanceof fNOP && oThis
+	                                 ? this
+	                                 : oThis,
+	                               aArgs.concat(Array.prototype.slice.call(arguments)));
+	        };
+
+	    fNOP.prototype = this.prototype;
+	    fBound.prototype = new fNOP();
+
+	    return fBound;
+	  };
+	}
+	if(!Array.prototype.indexOf)
+	{
+		Array.prototype.indexOf = function(needle){
+			for(var i = 0; i<this.length; i++)
+				if(this[i]==needle)
+					return i;
+			return -1;
+		}
+	}
+
+
+
+	/* ********************************************************************************************
+		valiDate code
+	*/
 
 	var valiDate = {
 		instances : [],
@@ -176,9 +221,9 @@
 
 		showSelector : function(){
 			$(valiDate.selector).css({
-				top      : this.offset.top + this.offset.height,
+				top      : this.offset.bottom,
 				left     : this.offset.left,
-				minWidth : this.offset.width
+				minWidth : this.offset.width ? this.offset.width : (this.offset.right - this.offset.left)
 			}).show();
 
 			var $this = this;
@@ -189,6 +234,12 @@
 		}
 
 	};
+
+
+	/* ********************************************************************************************
+		onload init
+	*/
+
 	$(function(){
 		document.body.insertAdjacentHTML('beforeend','<div id="valiDateSelector"><ul id="valiDateList"></ul></div>');
 	});
