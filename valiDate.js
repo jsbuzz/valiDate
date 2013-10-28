@@ -100,7 +100,7 @@
 			}.bind(this))
 			//#blur
 			.blur(function(){
-				valiDate.hideTimer = window.setTimeout(function(){$(valiDate.selector).hide()},100)
+				valiDate.hideTimer = window.setTimeout(function(){$(valiDate.selector).hide()},200)
 			});
 		},
 
@@ -182,8 +182,16 @@
 				return false;										
 			}
 
-			dateHTML = "<li>"+dates.join("</li><li>")+"</li>";
-			this.showOptions(dateHTML);
+			if(dates.length > 1)
+			{
+				dateHTML = "<li>"+dates.join("</li><li>")+"</li>";
+				this.showOptions(dateHTML);
+			}
+			else
+			{
+				this.validInput = dates[0];
+				this.onSelect();
+			}
 		},
 
 		showOptions : function(dateHTML){
