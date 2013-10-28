@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
 	<title>Date validation test</title>
 
@@ -25,10 +26,14 @@
 <body>
 	<h1>Date validation test <span>simple demo<br/>by Matyas Buczko</span></h1>
 	<div class="section">
+		<p>In the first example the next button is only enabled if the input field contains a valid date.<br/>
+		The validator tries to figure out the format and shows all possibilities.</p>
 		<input type="text" id="birthdate" class="date-input"/>
 		<button id="nextButton" disabled="disabled">Next</button>
 	</div>
 	<div class="section">
+		<p>This second demo is just a simple color representation.<br/>
+		The text is green if it contains a validated date and red otherwise</p>
 		<input type="text" id="childdate" class="date-input"/>
 	</div>
 </body>
